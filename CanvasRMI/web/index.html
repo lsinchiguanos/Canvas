@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Canvas RMI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="src/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="src/css/mycss.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <form class="container">
+            <div class="row">
+                <div class="col">
+                    <canvas id="lienzo" width="850" height="550"></canvas>
+                </div>
+            </div>
+            <br/>
+            <div class="row g-3">
+                <div class="col-sm-4">
+                    <input type="color" class="form-control-color" id="color" oninput="changecolor(this.value);" value="#563d7c" title="Choose your color">
+                </div>
+                <div class="col-sm-4">
+                    <input type="range" class="form-range-" id="grosor" oninput="changetextura(this.value);" min="1" max="20" value="5">
+                </div>
+            </div>
+            <br/>
+            <div class="row g-3">
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputCity" placeholder="Nombre">
+                </div>
+                <div class="col-sm-2">
+                    <select id="inputState" class="form-select">
+                        <option selected>Formato</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary">Exportar</button>
+                </div>
+            </div>
+        </form>
+        <script src="src/js/myjs.js" type="text/javascript"></script>
+        <script src="src/js/jquery-3.6.0.js" type="text/javascript"></script>
+    </body>
+</html>
