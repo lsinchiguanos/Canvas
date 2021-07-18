@@ -12,7 +12,7 @@ import java.rmi.RemoteException;
  *
  * @author Lemmar Dell
  */
-public interface IEExportaCliente extends Remote {
+public interface IEExportar extends Remote {
 
     String enviarExportar(String nombre, String formato, String datos) throws RemoteException;
 }

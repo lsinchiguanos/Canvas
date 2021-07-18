@@ -16,12 +16,12 @@ import java.rmi.registry.Registry;
  */
 public class ConexionRMI {
 
-    IEExportaCliente exportar;
+    IEExportar exportar;
 
     public ConexionRMI() {
         try {
-            Registry r = LocateRegistry.getRegistry("127.0.0.1", 9000);
-            exportar = (IEExportaCliente) r.lookup("rmi://localhost:2000/canvasserver");
+            Registry r = LocateRegistry.getRegistry("127.0.0.1", 9090);
+            exportar = (IEExportar) r.lookup("rmi://localhost:3000/canvasserver");
         } catch (NotBoundException | RemoteException e) {
         }
     }

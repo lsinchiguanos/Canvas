@@ -25,9 +25,9 @@ public class CanvasServer {
         try {
             ImagenControllador controllador = new ImagenControllador();
             System.setProperty("java.rmi.server.hostname", "127.0.0.1");
-            Remote stub = UnicastRemoteObject.exportObject(controllador, 9000);
-            Registry registry = LocateRegistry.createRegistry(9000);
-            registry.bind("rmi://localhost:2000/canvasserver", stub);
+            Remote stub = UnicastRemoteObject.exportObject(controllador, 9090);
+            Registry registry = LocateRegistry.createRegistry(9090);
+            registry.bind("rmi://localhost:3000/canvasserver", stub);
             System.out.println("inicio del servidor");
         } catch (AlreadyBoundException | RemoteException e) {
         }
