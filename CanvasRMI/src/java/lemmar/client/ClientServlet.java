@@ -7,6 +7,8 @@ package lemmar.client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +40,8 @@ public class ClientServlet extends HttpServlet {
             ConexionRMI conexionRMI = new ConexionRMI();
             String resultado = conexionRMI.expor(nombre, formato, datos);
             response.getWriter().print(resultado);
+        } catch (Exception e) {
+            Logger.getLogger(ClientServlet.class.getName()).log(Level.SEVERE, null,e);
         }
     }
 

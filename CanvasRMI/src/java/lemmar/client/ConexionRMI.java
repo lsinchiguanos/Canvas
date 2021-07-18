@@ -9,6 +9,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +25,7 @@ public class ConexionRMI {
             Registry r = LocateRegistry.getRegistry("127.0.0.1", 9090);
             exportar = (IEExportar) r.lookup("rmi://localhost:3000/canvasserver");
         } catch (NotBoundException | RemoteException e) {
+            Logger.getLogger(ConexionRMI.class.getName()).log(Level.SEVERE, null,e);
         }
     }
 
