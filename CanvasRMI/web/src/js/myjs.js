@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+/* Almacenamiento de imagen */
+var dataUrl;
+
 /* variable de obtención del elemento a ser renderizado */
 var canvas = document.getElementById('lienzo');
 
@@ -35,14 +38,14 @@ function changetextura(nuevaTextura) {
 ;
 
 /* presionado de botón de mouse */
-canvas.addEventListener('mousedown', function(env) {
+canvas.addEventListener('mousedown', function (env) {
     x = env.clientX - coor.left;
     y = env.clientY - coor.top;
     actDibujando = true;
 });
 
 /* movimiento del mouse */
-canvas.addEventListener('mousemove', function(env) {
+canvas.addEventListener('mousemove', function (env) {
     if (actDibujando === true) {
         graficar(x, y, env.clientX - coor.left, env.clientY - coor.top);
         x = env.clientX - coor.left;
@@ -51,7 +54,7 @@ canvas.addEventListener('mousemove', function(env) {
 });
 
 /* alza de botón de mouse */
-canvas.addEventListener('mouseup', function(env) {
+canvas.addEventListener('mouseup', function (env) {
     if (actDibujando === true) {
         graficar(x, y, env.clientX - coor.left, env.clientY - coor.top);
         x = 0;
@@ -69,5 +72,29 @@ function graficar(xInicial, yInicial, xFinal, yFinal) {
     ctx.lineTo(xFinal, yFinal);
     ctx.stroke();
     ctx.closePath();
+}
+;
+
+/* función para exportar */
+function exportar() {
+    let nombre = document.getElementById('nombreImagen').value;
+    let formato = document.getElementById('formato').value;
+    if (formato === 'png') {
+        dataUrl = canvas.toDataURL('image/png', 0);
+    } else {
+        dataUrl = canvas.toDataURL('image/jpeg', 1.0);
+    }
+    $.ajax({
+        method: 'POST',
+        url: 'ClientServlet',
+        data: {nombre: nombre, formato: formato, datos: dataUrl},
+        success: function (data) {
+            alert(data);
+        },
+        error: function (data, error) {
+            console.log(error);
+        }
+    });
+    console.log(dataUrl);
 }
 ;
