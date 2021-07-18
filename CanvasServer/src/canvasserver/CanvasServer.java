@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lemmar.controller;
+package canvasserver;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;
@@ -16,12 +16,12 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author Lemmar Dell
  */
-public class ExportarServer {
+public class CanvasServer {
 
-    public ExportarServer() {
-    }
-
-    public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
         try {
             ImagenControllador controllador = new ImagenControllador();
             System.setProperty("java.rmi.server.hostname", "127.0.0.1");
@@ -32,4 +32,5 @@ public class ExportarServer {
         } catch (AlreadyBoundException | RemoteException e) {
         }
     }
+    
 }

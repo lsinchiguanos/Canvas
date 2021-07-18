@@ -10,23 +10,22 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-
 /**
  *
  * @author Lemmar Dell
  */
 public class ConexionRMI {
-    
+
     IEExportaCliente exportar;
-    
-    public ConexionRMI(){
+
+    public ConexionRMI() {
         try {
             Registry r = LocateRegistry.getRegistry("127.0.0.1", 9000);
-            exportar = (IEExportaCliente)r.lookup("rmi://localhost:2000/canvasserver");
+            exportar = (IEExportaCliente) r.lookup("rmi://localhost:2000/canvasserver");
         } catch (NotBoundException | RemoteException e) {
         }
     }
-    
+
     public String expor(String nombre, String formato, String datos) {
         String resultado = "";
         try {
